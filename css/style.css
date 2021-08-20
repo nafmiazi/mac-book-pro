@@ -1,0 +1,8 @@
+.price-table td{
+    font-weight: bold;
+}
+.hr-line{
+    margin-top: -20px;
+    color: gray;
+    font-weight: bolder;
+}
