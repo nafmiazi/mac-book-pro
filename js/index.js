@@ -36,7 +36,7 @@ function totalPrice(){
     //  calling function for calculating total cost
     calculateTotalCost('total-price', memoryCost, storageCost, deliveryCost);
     calculateTotalCost('net-price', memoryCost, storageCost, deliveryCost);
- }
+}
 
 // Adding Event Handler for Promo Code 
 document.getElementById('promo-btn').addEventListener('click', function(){
