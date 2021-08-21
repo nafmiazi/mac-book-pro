@@ -1,3 +1,4 @@
+//  Function for receiving customize tools request
 function customizeTools(tools, cost){
     if(tools == 'memory'){
         document.getElementById(tools + '-cost').innerText = cost;
@@ -12,26 +13,33 @@ function customizeTools(tools, cost){
     totalPrice();
 }
 
+//  Function for calculating customize tools cost
 function customizeToolsCost(product){
-    const memoryAmount = document.getElementById(product).innerText;
-    const memoryCost = parseInt(memoryAmount);
-    return memoryCost;
+    const productAmount = document.getElementById(product).innerText;
+    const productCost = parseInt(productAmount);
+    return productCost;
 }
 
+// Function for calculating total cost
+function calculateTotalCost(priceArea, memoryCost, storageCost, deliveryCost){
+    const totalCost = document.getElementById(priceArea);
+    totalCost.innerText = 1299 + memoryCost + storageCost + deliveryCost;
+}
+
+// Function for total price
 function totalPrice(){
-    //  calculating customize tools cost
+    //  calling function for customize tools cost
     const memoryCost = customizeToolsCost('memory-cost');
     const storageCost = customizeToolsCost('storage-cost');
     const deliveryCost = customizeToolsCost('delivery-cost');
-    // calculating total cost 
-    const totalCost = document.getElementById('total-price');
-    totalCost.innerText = 1299 + memoryCost + storageCost + deliveryCost;
-    // calculating net cost
-    const netAmount = document.getElementById('net-price');
-    netAmount.innerText = 1299 + memoryCost + storageCost + deliveryCost;
+
+    //  calling function for calculating total cost
+    calculateTotalCost('total-price', memoryCost, storageCost, deliveryCost);
+    calculateTotalCost('net-price', memoryCost, storageCost, deliveryCost);
  }
 
- document.getElementById('promo-btn').addEventListener('click', function(){
+// Adding Event Handler for Promo Code 
+document.getElementById('promo-btn').addEventListener('click', function(){
     const promoCode = document.getElementById('promo-code').value;
     const netPresentAmount = document.getElementById('total-price');
     const netPrice = netPresentAmount.innerText;
@@ -41,4 +49,4 @@ function totalPrice(){
         document.getElementById('net-price').innerText = netAmount - netdiscount;
     }
     document.getElementById('promo-code').value = '';
- });
+});
